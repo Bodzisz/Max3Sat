@@ -1,4 +1,4 @@
-##Solution for Max3Sat problem using genetic algorithm
+## Solution for Max3Sat problem using genetic algorithm
 
 More details about the problem: https://en.wikipedia.org/wiki/MAX-3SAT
 
