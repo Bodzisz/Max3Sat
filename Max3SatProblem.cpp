@@ -12,12 +12,13 @@ Max3SatProblem::Max3SatProblem()
 }
 
 
-Max3SatProblem::Max3SatProblem(std::string path)
+Max3SatProblem::Max3SatProblem(std::string path, GeneticOptimizer* optimizer, int iterations)
+: optimizer(optimizer), iterations(iterations)
 {
-    clauses = load(std::move(path));
+    load(std::move(path));
 }
 
-std::vector<std::vector<int>> Max3SatProblem::load(std::string path)
+void Max3SatProblem::load(std::string path)
 {
     std::ifstream file(path);
     std::vector<std::vector<int>> result;
@@ -64,8 +65,8 @@ std::vector<std::vector<int>> Max3SatProblem::load(std::string path)
     }
 
     clauses = result;
-
-    return result;
+    optimizer->setClauses(clauses);
+    optimizer->setVariables(variables);
 }
 
 void Max3SatProblem::printClauses()
@@ -106,6 +107,20 @@ std::vector<std::vector<int>> Max3SatProblem::getClauses()
 std::set<int> Max3SatProblem::getVariables()
 {
     return variables;
+}
+
+void Max3SatProblem::runOptimizer()
+{
+    optimizer->initialize();
+    for(int i = 0; i < iterations; i++)
+    {
+        optimizer->runIteration();
+    }
+}
+
+std::tr1::unordered_map<int, bool> Max3SatProblem::getSolution()
+{
+    return optimizer->getSolution();
 }
 
 

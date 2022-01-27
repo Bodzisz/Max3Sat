@@ -4,7 +4,7 @@
 
 #include "SatIndividual.h"
 
-SatIndividual::SatIndividual() : GeneticIndividual()
+SatIndividual::SatIndividual()
 {
 }
 
@@ -90,6 +90,11 @@ void SatIndividual::createRandomSolution(const std::set<int>& variables)
 SatIndividual::SatIndividual(std::tr1::unordered_map<int, bool> genotype)
 {
     this->genotype = genotype;
+}
+
+std::tr1::unordered_map<int, bool> SatIndividual::getGenotype()
+{
+    return genotype;
 }
 
 

@@ -12,17 +12,16 @@
 
 class SatOptimizer : public GeneticOptimizer
 {
-    std::vector<std::vector<int>> clauses;
-    std::set<int> variables;
 
 public:
     SatOptimizer();
+    SatOptimizer(float crossingProb, float mutationProb);
     SatOptimizer(std::vector<std::vector<int>> clauses, std::set<int> variables, float crossingProb, float mutationProb);
     void initialize() override;
     void runIteration() override;
     SatIndividual chooseParent();
     std::pair<SatIndividual, SatIndividual> crossOver(SatIndividual parent1, SatIndividual parent2);
-    std::tr1::unordered_map<int, bool> getSolution();
+    std::tr1::unordered_map<int, bool> getSolution() override;
 };
 
 

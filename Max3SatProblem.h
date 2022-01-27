@@ -9,20 +9,25 @@
 #include <string>
 #include <tr1/unordered_map>
 #include <set>
+#include "GeneticOptimizer.h"
 
 class Max3SatProblem
 {
     std::vector<std::vector<int>> clauses;
     std::set<int> variables;
+    GeneticOptimizer* optimizer;
+    int iterations;
 
 public:
     Max3SatProblem();
-    Max3SatProblem(std::string path);
+    Max3SatProblem(std::string path, GeneticOptimizer* optimizer, int iterations);
     void printClauses();
-    std::vector<std::vector<int>> load(std::string path);
+    void load(std::string path);
+    void runOptimizer();
     float compute(std::tr1::unordered_map<int, bool> solutions);
     std::vector<std::vector<int>> getClauses();
     std::set<int> getVariables();
+    std::tr1::unordered_map<int, bool> getSolution();
 
 
 };

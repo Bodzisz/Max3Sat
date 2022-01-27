@@ -10,35 +10,14 @@ SatOptimizer::SatOptimizer() : GeneticOptimizer()
 {
 }
 
-SatOptimizer::SatOptimizer(std::vector<std::vector<int>> clauses, std::set<int> variables, float crossingProb, float mutationProb)
-: GeneticOptimizer(crossingProb, mutationProb), clauses(std::move(clauses)), variables(std::move(variables))
+SatOptimizer::SatOptimizer(float crossingProb, float mutationProb) : GeneticOptimizer(crossingProb, mutationProb)
 {
 }
 
-//void SatOptimizer::initialize(std::vector<std::vector<int>> clauses)
-//{
-//    for(int i = 0; i < populationSize; i++)
-//    {
-//        SatIndividual individual;
-//        for(int j = 0; j < clauses.size(); j++)
-//        {
-//            bool value = (rand() % 2) % 2 == 0;
-//            for(int variable : clauses[j])
-//            {
-//                if(value < 0)
-//                {
-//                    individual.getGenotype().insert({variable, value});
-//                }
-//                else
-//                {
-//                    individual.getGenotype().insert({-1 * variable, value});
-//                }
-//            }
-//        }
-//        population.push_back(individual);
-//    }
-//}
-
+SatOptimizer::SatOptimizer(std::vector<std::vector<int>> clauses, std::set<int> variables, float crossingProb, float mutationProb)
+: GeneticOptimizer(crossingProb, mutationProb, std::move(clauses), std::move(variables))
+{
+}
 
 void SatOptimizer::runIteration()
 {
@@ -116,3 +95,6 @@ std::tr1::unordered_map<int, bool> SatOptimizer::getSolution()
     }
     return population[index].getGenotype();
 }
+
+
+
