@@ -15,11 +15,15 @@ SatIndividual::SatIndividual(const std::set<int> &variables)
 
 std::pair<SatIndividual, SatIndividual> SatIndividual::crossOver(SatIndividual other, const std::set<int>& variables)
 {
+    std::random_device rd; // obtain a random number from hardware
+    std::mt19937 gen(rd()); // seed the generator
+    std::uniform_int_distribution<> distr(1, 2); // define the range
+
     std::tr1::unordered_map<int, bool> firstChildGenotype;
     std::tr1::unordered_map<int, bool> secondChildGenotype;
     std::set<int>::iterator itr;
     for (itr = variables.begin(); itr != variables.end(); itr++) {
-        if(rand() % 2 == 0)
+        if(distr(gen) % 2 == 0)
         {
             firstChildGenotype.insert({*itr, genotype[*itr]});
             secondChildGenotype.insert({*itr, other.genotype[*itr]});
