@@ -96,5 +96,19 @@ std::tr1::unordered_map<int, bool> SatOptimizer::getSolution()
     return population[index].getGenotype();
 }
 
+float SatOptimizer::getSolutionFitness()
+{
+    float bestFitness = -0.1;
+    for(int i = 0; i < population.size(); i++)
+    {
+        float tempFitness = population[i].fitness(clauses);
+        if(tempFitness > bestFitness)
+        {
+            bestFitness = tempFitness;
+        }
+    }
+    return bestFitness;
+}
+
 
 

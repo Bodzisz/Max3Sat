@@ -11,7 +11,7 @@ int main()
         Max3SatProblem sat("/home/bodzisz/University/Max3SatProblem/max3sat/50/m3s_50_" + std::to_string(i) + ".txt",
                            optimizer, 20);
         sat.runOptimizer();
-        std::cout << i + 1 << ". " <<  sat.compute(sat.getSolution()) << std::endl;
+        std::cout << i + 1 << ". " <<  sat.getSolutionFitness() << std::endl;
     }
 
     delete optimizer;

@@ -28,6 +28,7 @@ public:
     std::vector<std::vector<int>> getClauses();
     std::set<int> getVariables();
     std::tr1::unordered_map<int, bool> getSolution();
+    float getSolutionFitness();
 
 
 };

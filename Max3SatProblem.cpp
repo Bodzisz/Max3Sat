@@ -123,4 +123,9 @@ std::tr1::unordered_map<int, bool> Max3SatProblem::getSolution()
     return optimizer->getSolution();
 }
 
+float Max3SatProblem::getSolutionFitness()
+{
+    return optimizer->getSolutionFitness();
+}
+
 

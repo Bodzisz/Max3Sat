@@ -25,6 +25,7 @@ public:
     virtual void initialize() = 0;
     virtual void runIteration() = 0;
     virtual std::tr1::unordered_map<int, bool> getSolution() = 0;
+    virtual float getSolutionFitness() = 0;
     void setClauses(std::vector<std::vector<int>> newClauses);
     void setVariables(std::set<int> newVariables);
 };

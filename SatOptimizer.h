@@ -22,6 +22,7 @@ public:
     SatIndividual chooseParent();
     std::pair<SatIndividual, SatIndividual> crossOver(SatIndividual parent1, SatIndividual parent2);
     std::tr1::unordered_map<int, bool> getSolution() override;
+    float getSolutionFitness() override;
 };
 
 
